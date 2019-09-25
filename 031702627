@@ -146,6 +146,5 @@ def main():
     
     dict_json = json.dumps(dict) 
     print(dict_json)
-    print(dict)
 
 main()  #执行组函数
