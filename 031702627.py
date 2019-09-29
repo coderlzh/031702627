@@ -60,6 +60,9 @@ def get_road(string_input):             #五级地址提取函数
     searchobj = re.search("\S*?街",address_input)
     if(searchobj):
         return searchobj.group()
+    searchobj = re.search("\S*?弄",address_input)
+    if(searchobj):
+        return searchobj.group()
 def get_num(string_input):              #六级地址提取函数
     address_input = string_input
     searchobj = re.search("\S*?号",address_input)  
@@ -117,8 +120,14 @@ def main(inputraw):
     else:
         dict.setdefault("地址",[]).append("") #没有，不执行删除操作，在字典中加入空字符
         #print("%s\n" %string_input)
-    if(string_input[0]=="市"):                               
+    if(string_input[0]=="市"):                        #打表       
         string_input = re.sub("市","",string_input,1)
+    if(string_input[0]=="州"):                               
+        string_input = re.sub("州","",string_input,1)
+    if(string_input[0]=="县"):                               
+        string_input = re.sub("县","",string_input,1)
+    if(string_input[0]=="盟"):                               
+        string_input = re.sub("盟","",string_input,1)
     if(get_village(string_input)):                      #与提取城市同理
         dict.setdefault("地址",[]).append(get_village(string_input))
         string_input =re.sub(get_village(string_input),"",string_input,1)
