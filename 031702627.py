@@ -80,9 +80,9 @@ def get_name(string_input):
 
 
 
-def main():
+def main(inputraw):
     dict={}
-    string_input=input()
+    string_input=inputraw
     type = string_input[0]  #记录类型
     string_input = re.sub("1!","",string_input,1)   #预处理
     string_input = re.sub("2!","",string_input,1)
@@ -149,5 +149,12 @@ def main():
     dict_json = json.dumps(dict) 
     print(dict_json)
     #print(dict)
-
-main()  #执行组函数
+while 1:
+    try:
+        inputraw = input();
+        if(inputraw == "END"):
+            break
+    except EOFError:
+        break
+    main(inputraw)
+#main()  #执行组函数
