@@ -90,7 +90,7 @@ def main():
     dict["姓名"] = get_name(string_input)[:-1]    #需要先提取姓名，防止姓名中存在关键词：省、市之类的
     string_input =re.sub(get_name(string_input),"",string_input,1)     #删除已选出的姓名信息  
     string_input = re.sub("省","",string_input,1)    #预处理
-    string_input = re.sub("市","",string_input,1)
+    #string_input = re.sub("市","",string_input,1)
     string_input = re.sub("\.","",string_input,1)
     #print("%s\n" %string_input)
     #print("%s\n" %string_input)
@@ -117,6 +117,8 @@ def main():
     else:
         dict.setdefault("地址",[]).append("") #没有，不执行删除操作，在字典中加入空字符
         #print("%s\n" %string_input)
+    if(string_input[0]=="市"):                               
+        string_input = re.sub("市","",string_input,1)
     if(get_village(string_input)):                      #与提取城市同理
         dict.setdefault("地址",[]).append(get_village(string_input))
         string_input =re.sub(get_village(string_input),"",string_input,1)
