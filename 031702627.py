@@ -86,7 +86,11 @@ def get_name(string_input):
 def main(inputraw):
     dict={}
     string_input=inputraw
-    type = string_input[0]  #记录类型
+    try:
+        type = string_input[0]  #记录类型
+    except:
+        print("错误，禁止输入空字符串")
+        return -1
     string_input = re.sub("1!","",string_input,1)   #预处理
     string_input = re.sub("2!","",string_input,1)
     string_input = re.sub("3!","",string_input,1)
