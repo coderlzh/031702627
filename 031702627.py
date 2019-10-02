@@ -104,8 +104,11 @@ def main(inputraw):
     dict["手机"] = get_phone(string_input)    #提取手机号
     string_input =re.sub(get_phone(string_input),"",string_input,1) #删除已选出的手机信息
     #print("%s\n" %string_input)
-    dict.setdefault("地址",[]).append(get_province(string_input)) #提取地址所在省，并放入字典中的“地址”部分
-    string_input =re.sub(get_province(string_input)[:-1],"",string_input,1) #删除已选出的省份信息
+    if(get_province(string_input)):
+        dict.setdefault("地址",[]).append(get_province(string_input)) #提取地址所在省，并放入字典中的“地址”部分
+        string_input =re.sub(get_province(string_input)[:-1],"",string_input,1) #删除已选出的省份信息
+    else:
+        dict.setdefault("地址",[]).append("")
     #print("%s\n" %string_input)
     if(string_input[0]=="区"):                               #打表处理直辖市问题
         string_input = re.sub("区","",string_input,1)
