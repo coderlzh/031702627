@@ -22,6 +22,10 @@ def get_province(string_input):         #省份提取函数，遍历地址表的
 def get_city(string_input,province):    #城市提取函数，遍历省份对应的链表
     if(province == "北京" or province == "上海" or province == "重庆" or province == "天津"):       #直辖市特殊处理
         return province + "市"
+    if(province == ""):
+        searchobj = re.search("\S*?市",address_input)
+        if(searchobj):
+            return searchobj.group()
     address_input = string_input
     for index in range(len(address[province])):
         matchobj = re.match(address_input[0:2],address[province][index])
