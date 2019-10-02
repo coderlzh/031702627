@@ -24,8 +24,7 @@ def get_city(string_input,province):    #城市提取函数，遍历省份对应
         return province + "市"
     if(province == ""):
         searchobj = re.search("\S*?市",string_input)
-        if(searchobj):
-            return searchobj.group()
+        return searchobj.group()
     address_input = string_input
     for index in range(len(address[province])):
         matchobj = re.match(address_input[0:2],address[province][index])
